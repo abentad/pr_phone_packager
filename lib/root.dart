@@ -10,28 +10,39 @@ class Root extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      drawer: Drawer(),
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("PACKAGOCH", style: TextStyle(fontSize: 34.0, fontWeight: FontWeight.w600, color: Color(0xff7C83FD))),
-              // GridView.builder(gridDelegate: gridDelegate, itemBuilder: itemBuilder)
-              SizedBox(height: size.height * 0.05),
-              Expanded(
-                child: GridView(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              Container(
+                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    buildCard(bgColor: Color(0xff96BAFF), ontap: () => _dialController.buyDaily3BirrInternetPackage(), text: "3 birr"),
-                    buildCard(bgColor: Color(0xff7DEDFF), ontap: () => _dialController.buyDaily5BirrInternetPackage(), text: "5 birr"),
-                    buildCard(bgColor: Color(0xff00EAD3), ontap: () {}, text: "10 birr"),
-                    buildCard(bgColor: Color(0xff88FFF7), ontap: () {}, text: "15 birr"),
-                    buildCard(bgColor: Color(0xff94D0CC), ontap: () {}, text: "20 birr"),
-                    buildCard(bgColor: Color(0xff96BAFF), ontap: () {}, text: "25 birr"),
+                    // Icon(Icons.menu, color: Colors.black, size: size.height * 0.05),
+                    Text("PACKAGOCH", style: TextStyle(color: Color(0xff005F99), fontSize: 24.0, fontWeight: FontWeight.bold)),
+                    Container(
+                      decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.black, width: 1.0)),
+                      height: size.height * 0.1,
+                      width: size.width * 0.1,
+                    ),
                   ],
                 ),
               ),
+              // GridView.builder(gridDelegate: gridDelegate, itemBuilder: itemBuilder)
+              SizedBox(height: size.height * 0.05),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "INTERNET", size: size, iconData: Icons.wifi),
+              SizedBox(height: size.height * 0.02),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "PHONE", size: size, iconData: Icons.phone),
+              SizedBox(height: size.height * 0.02),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "SMS", size: size, iconData: Icons.sms),
+              SizedBox(height: size.height * 0.02),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "PREMIUM", size: size, iconData: Icons.mode_rounded),
+              SizedBox(height: size.height * 0.02),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "OTHERS", size: size, iconData: Icons.more),
             ],
           ),
         ),
@@ -39,22 +50,26 @@ class Root extends StatelessWidget {
     );
   }
 
-  Widget buildCard({required Color bgColor, required Function() ontap, required String text}) => InkWell(
-        onTap: ontap,
-        borderRadius: BorderRadius.circular(10.0),
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-          decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.phone),
-              SizedBox(width: 10.0),
-              Text(text),
-            ],
+  Widget buildCard({required Color bgColor, required Function() ontap, required String text, required Size size, required IconData iconData}) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: InkWell(
+          onTap: ontap,
+          borderRadius: BorderRadius.circular(10.0),
+          child: Container(
+            padding: const EdgeInsets.only(left: 50),
+            height: size.height * 0.13,
+            decoration: BoxDecoration(
+              color: bgColor,
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(iconData, color: Colors.white),
+                SizedBox(width: size.width * 0.05),
+                Text(text, style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 18.0)),
+              ],
+            ),
           ),
         ),
       );
