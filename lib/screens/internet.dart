@@ -1,46 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:phone_packager/screens/internet.dart';
+import 'package:phone_packager/screens/internet/daily_internet.dart';
 
-class Root extends StatelessWidget {
+class InternetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      drawer: Drawer(),
       body: SafeArea(
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // Icon(Icons.menu, color: Colors.black, size: size.height * 0.05),
-                    Text("PACKAGOCH", style: TextStyle(color: Color(0xff005F99), fontSize: 24.0, fontWeight: FontWeight.bold)),
-                    Container(
-                      decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.black, width: 1.0)),
-                      height: size.height * 0.1,
-                      width: size.width * 0.1,
-                    ),
-                  ],
-                ),
-              ),
               // GridView.builder(gridDelegate: gridDelegate, itemBuilder: itemBuilder)
               SizedBox(height: size.height * 0.05),
-              buildCard(bgColor: Colors.teal, ontap: () => Get.to(() => InternetScreen(), transition: Transition.cupertino), text: "INTERNET", size: size, iconData: Icons.wifi),
+              buildCard(bgColor: Colors.teal, ontap: () => Get.to(() => DailyInternet(), transition: Transition.cupertino), text: "Daily", size: size, iconData: Icons.wifi),
               SizedBox(height: size.height * 0.02),
-              buildCard(bgColor: Colors.teal, ontap: () {}, text: "PHONE", size: size, iconData: Icons.phone),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "Weekly", size: size, iconData: Icons.wifi),
               SizedBox(height: size.height * 0.02),
-              buildCard(bgColor: Colors.teal, ontap: () {}, text: "SMS", size: size, iconData: Icons.sms),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "Bi-weekly", size: size, iconData: Icons.wifi),
               SizedBox(height: size.height * 0.02),
-              buildCard(bgColor: Colors.teal, ontap: () {}, text: "PREMIUM", size: size, iconData: Icons.mode_rounded),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "Weekend", size: size, iconData: Icons.wifi),
               SizedBox(height: size.height * 0.02),
-              buildCard(bgColor: Colors.teal, ontap: () {}, text: "OTHERS", size: size, iconData: Icons.more),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "Monthly", size: size, iconData: Icons.wifi),
+              SizedBox(height: size.height * 0.02),
+              buildCard(bgColor: Colors.teal, ontap: () {}, text: "OTHERS", size: size, iconData: Icons.wifi),
             ],
           ),
         ),
