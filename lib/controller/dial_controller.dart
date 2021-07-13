@@ -22,9 +22,9 @@ class DialController extends GetxController {
     }
   }
 
-  void buyDaily3BirrInternetPackage() async {
+  void buyDailyPackage(String dialNumber) async {
     // const number = '*999*2*1*2*1*1*1#';
-    const number = '*999*2*1*2*1*1#';
+    String number = '*999*2*1*2*1*$dialNumber#';
     // bool? res = await FlutterPhoneDirectCaller.callNumber(number);
     try {
       await FlutterPhoneDirectCaller.callNumber(number);
